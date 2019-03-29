@@ -1,0 +1,55 @@
+﻿@page "/servertypes"
+@inherits BlazorDDL.Client.Pages.ServerTypesModel
+
+<h1>Server Types</h1>
+
+<p>This component demonstrates cascading dropdownlist using EntityFrameWork Core</p>
+<hr />
+
+@if (serverTypesList == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <div class="row">
+        <div class="col-md-4">
+            <label for="ServerTypes" class="control-label">ServerTypes</label>
+        </div>
+        <div class="col-md-4">
+            <label asp-for="Servers" class="control-label">Servers</label>
+        </div>
+    </div>
+    <div class="row" style="padding-top:10px">
+        <div class="col-md-4">
+            <select class="form-control" onchange="@ServerTypesClicked">
+                <option value="">-- Select Country --</option>
+                @foreach (var serverTypes in serverTypesList)
+                {
+                    <option value="@serverTypes.ServerTypeId">@serverTypes.Name</option>
+                }
+            </select>
+        </div>
+        <div class="col-md-4">
+            <select class="form-control" onchange="@ServerClicked">
+                <option value="">-- Select Servers --</option>
+                @if (serverList != null)
+                {
+                    @foreach (var server in serverList)
+                    {
+                        <option value="@server.ServerId">@server.Name</option>
+                    }
+                }
+            </select>
+        </div>
+    </div>
+    <div class="row" style="padding-top:50px">
+        <div class="col-md-4">
+            <label class="control-label">ServerType Name: @serverTypesName</label>
+        </div>
+        <div class="col-md-4">
+            <label class="control-label">Server Name: @serverName</label>
+        </div>
+    </div>
+
+}

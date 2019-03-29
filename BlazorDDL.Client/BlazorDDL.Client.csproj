@@ -4,6 +4,7 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <OutputType>Exe</OutputType>
     <LangVersion>7.3</LangVersion>
+    <BlazorLinkOnBuild>false</BlazorLinkOnBuild> <!-- was having linker error until add this line per https://www.codeproject.com/Articles/1244729/ASP-NET-Core-Blazor-CRUD-using-Entity-Framework-an -->
   </PropertyGroup>
 
   <ItemGroup>
